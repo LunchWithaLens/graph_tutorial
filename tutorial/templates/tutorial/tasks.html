@@ -1,0 +1,26 @@
+{% extends "tutorial/layout.html" %}
+{% block content %}
+<h1>Planner Tasks</h1>
+<table class="table">
+ <thead>
+   <tr>
+     <th scope="col">Title</th>
+     <th scope="col">Start</th>
+     <th scope="col">Due</th>
+     <th scope="col">Percent Complete</th>
+   </tr>
+ </thead>
+ <tbody>
+   {% if tasks %}
+     {% for task in tasks %}
+       <tr>
+         <td>{{ task.title }}</td>
+         <td>{{ task.startDateTime|date:'SHORT_DATETIME_FORMAT' }}</td>
+         <td>{{ task.dueDateTime|date:'SHORT_DATETIME_FORMAT' }}</td>
+         <td>{{ task.percentComplete }}</td>
+       </tr>
+     {% endfor %}
+   {% endif %}
+ </tbody>
+</table>
+{% endblock %}
